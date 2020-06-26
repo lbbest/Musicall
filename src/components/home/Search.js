@@ -33,11 +33,29 @@ export default class Search extends Component {
   };
 
   /*axios GET request to Spotify API to get search results*/
-  doSearch = (search, type) => {
-    // axios.get(
-    //   `https://api.spotify.com/v1/search/q=${search}&type=${type}&limit=50`
-    // );
-    console.log(this.state);
+  doSearch = () => {
+    /*assign search variables*/
+    let search = this.state.search;
+    let type = this.state.type;
+
+    /*assign GET request variables inc. search variables and API token*/
+    let url = `https://api.spotify.com/v1/search?q=${search}&type=${type}&limit=50`;
+    let header = {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")} `,
+        "Content-Type": "application/json",
+      },
+    };
+
+    /*make GET request to Spotify API*/
+    axios
+      .get(url, header)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   render() {
