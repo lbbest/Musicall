@@ -61,7 +61,7 @@ class Home extends Component {
     return (
       <div>
         <Nav />
-        <h1>Musicall</h1>
+        <h1>music.all</h1>
         {spotifyAuth}
       </div>
     );
