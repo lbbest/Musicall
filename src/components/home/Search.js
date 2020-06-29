@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SearchResult from "./SearchResult";
 import axios from "axios";
 
 export default class Search extends Component {
@@ -8,6 +9,7 @@ export default class Search extends Component {
     this.state = {
       search: "",
       type: "artist,album,track",
+      results: null,
     };
   }
 
@@ -51,7 +53,22 @@ export default class Search extends Component {
     axios
       .get(url, header)
       .then((res) => {
-        console.log(res);
+        let artistArray = [];
+        if (res.data.artists) {
+          artistArray = res.data.artists.items;
+        }
+        let albumArray = [];
+        if (res.data.albums) {
+          albumArray = res.data.albums.items;
+        }
+        let trackArray = [];
+        if (res.data.tracks) {
+          trackArray = res.data.tracks.items;
+        }
+        let resultsArray = [...artistArray, ...albumArray, ...trackArray];
+
+        this.setState({ results: resultsArray });
+        console.log(this.state);
       })
       .catch((err) => {
         console.log(err);
@@ -59,47 +76,59 @@ export default class Search extends Component {
   };
 
   render() {
+    const results = this.state.results ? (
+      <div className="search-results">
+        {this.state.results.map((result, index) => {
+          return <SearchResult key={index} result={result} />;
+        })}
+      </div>
+    ) : (
+      <div></div>
+    );
     return (
       <div>
-        <input
-          type="text"
-          id="search"
-          placeholder="Search for an Artist, Album or Song..."
-          /*fires search function upon user input*/
-          onChange={(event) => this.handleSearch(event.target.value)}
-        ></input>
-        <button onClick={this.doSearch}>
-          <p className="search-icon">&#9906;</p>
-        </button>
-        <div>
+        <div className="search">
           <input
-            type="checkbox"
-            className="search-selection"
-            name="type"
-            value="artist"
-            onChange={(event) => this.handleType(event.target.value)}
-            defaultChecked
+            type="text"
+            id="search"
+            placeholder="Search for an Artist, Album or Track..."
+            /*fires search function upon user input*/
+            onChange={(event) => this.handleSearch(event.target.value)}
           ></input>
-          <label htmlFor="artist">Artists</label>
-          <input
-            type="checkbox"
-            className="search-selection"
-            name="type"
-            value="album"
-            onChange={(event) => this.handleType(event.target.value)}
-            defaultChecked
-          ></input>
-          <label htmlFor="album">Albums</label>
-          <input
-            type="checkbox"
-            className="search-selection"
-            name="type"
-            value="track"
-            onChange={(event) => this.handleType(event.target.value)}
-            defaultChecked
-          ></input>
-          <label htmlFor="song">Songs</label>
+          <button onClick={this.doSearch}>
+            <p className="search-icon">&#9906;</p>
+          </button>
+          <div>
+            <input
+              type="checkbox"
+              className="search-selection"
+              name="type"
+              value="artist"
+              onChange={(event) => this.handleType(event.target.value)}
+              defaultChecked
+            ></input>
+            <label htmlFor="artist">Artists</label>
+            <input
+              type="checkbox"
+              className="search-selection"
+              name="type"
+              value="album"
+              onChange={(event) => this.handleType(event.target.value)}
+              defaultChecked
+            ></input>
+            <label htmlFor="album">Albums</label>
+            <input
+              type="checkbox"
+              className="search-selection"
+              name="type"
+              value="track"
+              onChange={(event) => this.handleType(event.target.value)}
+              defaultChecked
+            ></input>
+            <label htmlFor="track">Tracks</label>
+          </div>
         </div>
+        {results}
       </div>
     );
   }
