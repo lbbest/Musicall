@@ -12,7 +12,11 @@ export default class SearchResult extends Component {
       imageUrl = "#";
     } else if (this.props.result.images) {
       imageUrl = this.props.result.images[1].url;
-    } else if (this.props.result.type === "track") {
+    } else if (
+      (this.props.result.images === undefined ||
+        this.props.result.images.length === 0) &&
+      this.props.result.type === "track"
+    ) {
       imageUrl = this.props.result.album.images[1].url;
     }
 
