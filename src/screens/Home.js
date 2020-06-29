@@ -41,7 +41,7 @@ class Home extends Component {
     const spotifyAuth = localStorage.getItem("token") ? (
       <div>
         <p>
-          Use the search bar below to find for your favourite music or discover
+          Use the search bar below to find your favourite music or discover
           something new!
         </p>
         <Search />
