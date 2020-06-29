@@ -29,9 +29,12 @@ export default class Search extends Component {
     }
 
     let checkedString = checked.join();
-    this.setState({
-      type: checkedString,
-    });
+    this.setState(
+      {
+        type: checkedString,
+      },
+      this.doSearch
+    );
   };
 
   /*axios GET request to Spotify API to get search results*/
@@ -71,6 +74,7 @@ export default class Search extends Component {
         console.log(this.state);
       })
       .catch((err) => {
+        this.setState({ results: null });
         console.log(err);
       });
   };
@@ -92,18 +96,18 @@ export default class Search extends Component {
             type="text"
             id="search"
             placeholder="Search for an Artist, Album or Track..."
+            autoComplete="off"
             /*fires search function upon user input*/
             onChange={(event) => this.handleSearch(event.target.value)}
+            onKeyUp={this.doSearch}
           ></input>
-          <button onClick={this.doSearch}>
-            <p className="search-icon">&#9906;</p>
-          </button>
           <div>
             <input
               type="checkbox"
               className="search-selection"
               name="type"
               value="artist"
+              id="artist"
               onChange={(event) => this.handleType(event.target.value)}
               defaultChecked
             ></input>
@@ -113,6 +117,7 @@ export default class Search extends Component {
               className="search-selection"
               name="type"
               value="album"
+              id="album"
               onChange={(event) => this.handleType(event.target.value)}
               defaultChecked
             ></input>
@@ -122,6 +127,7 @@ export default class Search extends Component {
               className="search-selection"
               name="type"
               value="track"
+              id="track"
               onChange={(event) => this.handleType(event.target.value)}
               defaultChecked
             ></input>
