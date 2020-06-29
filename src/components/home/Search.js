@@ -9,7 +9,8 @@ export default class Search extends Component {
     this.state = {
       search: "",
       type: "artist,album,track",
-      results: null,
+      results: [],
+      isLoading: false,
     };
   }
 
@@ -39,6 +40,9 @@ export default class Search extends Component {
 
   /*axios GET request to Spotify API to get search results*/
   doSearch = () => {
+    /*search is loading*/
+    this.setState({ isLoading: true });
+
     /*assign search variables*/
     let search = this.state.search;
     let type = this.state.type;
@@ -70,25 +74,40 @@ export default class Search extends Component {
         }
         let resultsArray = [...artistArray, ...albumArray, ...trackArray];
 
+        this.setState({ isLoading: false });
         this.setState({ results: resultsArray });
         console.log(this.state);
       })
       .catch((err) => {
-        this.setState({ results: null });
+        this.setState({ isLoading: false });
+        this.setState({ results: [] });
         console.log(err);
       });
   };
 
   render() {
-    const results = this.state.results ? (
-      <div className="search-results">
-        {this.state.results.map((result, index) => {
-          return <SearchResult key={index} result={result} />;
-        })}
-      </div>
-    ) : (
-      <div></div>
-    );
+    /*if results are loading, show loading symbol*/
+    const isLoading = this.state.isLoading ? <p>LOADING...</p> : <div></div>;
+    /*if there are results and not loading, show results*/
+    const results =
+      this.state.results && this.state.isLoading === false ? (
+        <div className="search-results">
+          {this.state.results.map((result, index) => {
+            return <SearchResult key={index} result={result} />;
+          })}
+        </div>
+      ) : (
+        <div></div>
+      );
+    /*if there are no results, not loading and search term is not empty, show no results*/
+    const noResults =
+      this.state.isLoading === false &&
+      this.state.results.length === 0 &&
+      this.state.search !== "" ? (
+        <p>No Results</p>
+      ) : (
+        <div></div>
+      );
     return (
       <div>
         <div className="search">
@@ -134,7 +153,9 @@ export default class Search extends Component {
             <label htmlFor="track">Tracks</label>
           </div>
         </div>
+        {isLoading}
         {results}
+        {noResults}
       </div>
     );
   }
