@@ -3,14 +3,13 @@ import React, { Component } from "react";
 export default class Nav extends Component {
   render() {
     return (
-      <div>
-        <p>M.</p>
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+      <nav>
+        <p id="nav-logo">music.all</p>
+        <ul className="nav-link-container">
+          <li className="nav-link">About</li>
+          <li className="nav-link">Contact</li>
         </ul>
-      </div>
+      </nav>
     );
   }
 }
