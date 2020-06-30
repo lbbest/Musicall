@@ -90,7 +90,9 @@ export default class Search extends Component {
     const isLoading = this.state.isLoading ? <p>LOADING...</p> : <div></div>;
     /*if there are results and not loading, show results*/
     const results =
-      this.state.results && this.state.isLoading === false ? (
+      this.state.results &&
+      this.state.isLoading === false &&
+      this.state.search !== "" ? (
         <div className="search-results">
           {this.state.results.map((result, index) => {
             return <SearchResult key={index} result={result} />;
