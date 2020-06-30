@@ -5,19 +5,15 @@ export default class SearchResult extends Component {
     /*conditionally render image depending on result type*/
     let imageUrl = null;
     if (
-      (this.props.result.images === undefined ||
-        this.props.result.images.length === 0) &&
-      this.props.result.type !== "track"
+      (this.props.result.type === "track" &&
+        (this.props.result.album.images === undefined ||
+          this.props.result.album.images.length === 0)) ||
+      this.props.result.images === undefined ||
+      this.props.result.images.length === 0
     ) {
-      imageUrl = "#";
-    } else if (this.props.result.images) {
-      imageUrl = this.props.result.images[1].url;
-    } else if (
-      (this.props.result.images === undefined ||
-        this.props.result.images.length === 0) &&
-      this.props.result.type === "track"
-    ) {
-      imageUrl = this.props.result.album.images[1].url;
+      imageUrl = "https://static.thenounproject.com/png/29993-200.png";
+    } else {
+      imageUrl = this.props.result.images[0].url;
     }
 
     /*conditionally render album type if result is album*/
