@@ -39,30 +39,26 @@ class Home extends Component {
 
   render() {
     const spotifyAuth = localStorage.getItem("token") ? (
-      <div>
-        <p>
-          Use the search bar below to find your favourite music or discover
-          something new!
-        </p>
+      <div className="home-page-body">
+        <h1 id="home-page-header">music.all</h1>
         <Search />
       </div>
     ) : (
-      <div>
-        <p>Please connect to your Spotify account using the button below.</p>
+      <div className="home-page-body">
+        <h1 id="home-page-header">music.all</h1>
         <a
           className="spotifyAuth-btn"
           href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&show_dialog=true`}
         >
-          Login to Spotify
+          Login with Spotify
         </a>
-        <p>Why?</p>
+        <p className="home-page-body">Why?</p>
       </div>
     );
     return (
-      <div>
+      <div className="home-page">
         <Nav />
-        <h1>music.all</h1>
-        {spotifyAuth}
+        <div className="home-page-container">{spotifyAuth}</div>
       </div>
     );
   }

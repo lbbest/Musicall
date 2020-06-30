@@ -11,6 +11,7 @@ export default class Search extends Component {
       type: "artist,album,track",
       results: [],
       isLoading: false,
+      noResultsOn: false,
     };
   }
 
@@ -40,9 +41,6 @@ export default class Search extends Component {
 
   /*axios GET request to Spotify API to get search results*/
   doSearch = () => {
-    /*search is loading*/
-    this.setState({ isLoading: true });
-
     /*assign search variables*/
     let search = this.state.search;
     let type = this.state.type;
@@ -59,6 +57,12 @@ export default class Search extends Component {
     /*make GET request to Spotify API*/
     axios
       .get(url, header)
+      .then(
+        /*search is loading*/ this.setState({
+          noResultsOn: false,
+          isLoading: true,
+        })
+      )
       .then((res) => {
         let artistArray = [];
         if (res.data.artists) {
@@ -74,7 +78,7 @@ export default class Search extends Component {
         }
         let resultsArray = [...artistArray, ...albumArray, ...trackArray];
 
-        this.setState({ isLoading: false });
+        this.setState({ isLoading: false, noResultsOn: true });
         this.setState({ results: resultsArray });
         console.log(this.state);
       })
@@ -87,7 +91,11 @@ export default class Search extends Component {
 
   render() {
     /*if results are loading, show loading symbol*/
-    const isLoading = this.state.isLoading ? <p>LOADING...</p> : <div></div>;
+    const isLoading = this.state.isLoading ? (
+      <div className="loader"></div>
+    ) : (
+      <div></div>
+    );
     /*if there are results and not loading, show results*/
     const results =
       this.state.results &&
@@ -105,59 +113,77 @@ export default class Search extends Component {
     const noResults =
       this.state.isLoading === false &&
       this.state.results.length === 0 &&
-      this.state.search !== "" ? (
-        <p>No Results</p>
+      this.state.search !== "" &&
+      this.state.noResultsOn === true ? (
+        <div>
+          <p id="no-results">!</p>
+          <p id="no-results-text">No Results</p>
+        </div>
       ) : (
         <div></div>
       );
     return (
       <div>
         <div className="search">
-          <input
-            type="text"
-            id="search"
-            placeholder="Search for an Artist, Album or Track..."
-            autoComplete="off"
-            /*fires search function upon user input*/
-            onChange={(event) => this.handleSearch(event.target.value)}
-            onKeyUp={this.doSearch}
-          ></input>
-          <div>
+          <div className="searchbar-area">
+            <p className="search-icon">&#9906;</p>
             <input
-              type="checkbox"
-              className="search-selection"
-              name="type"
-              value="artist"
-              id="artist"
-              onChange={(event) => this.handleType(event.target.value)}
-              defaultChecked
+              id="searchbar"
+              type="text"
+              placeholder="Search for an Artist, Album or Track..."
+              autoComplete="off"
+              /*fires search function upon user input*/
+              onChange={(event) => this.handleSearch(event.target.value)}
+              onKeyUp={this.doSearch}
             ></input>
-            <label htmlFor="artist">Artists</label>
-            <input
-              type="checkbox"
-              className="search-selection"
-              name="type"
-              value="album"
-              id="album"
-              onChange={(event) => this.handleType(event.target.value)}
-              defaultChecked
-            ></input>
-            <label htmlFor="album">Albums</label>
-            <input
-              type="checkbox"
-              className="search-selection"
-              name="type"
-              value="track"
-              id="track"
-              onChange={(event) => this.handleType(event.target.value)}
-              defaultChecked
-            ></input>
-            <label htmlFor="track">Tracks</label>
+          </div>
+          <div className="filter">
+            <label htmlFor="artist" className="checkbox-container">
+              Artists
+              <input
+                type="checkbox"
+                className="search-selection"
+                name="type"
+                value="artist"
+                id="artist"
+                onChange={(event) => this.handleType(event.target.value)}
+                defaultChecked
+              ></input>
+              <span className="checkbox"></span>
+            </label>
+            <label htmlFor="album" className="checkbox-container">
+              Albums
+              <input
+                type="checkbox"
+                className="search-selection"
+                name="type"
+                value="album"
+                id="album"
+                onChange={(event) => this.handleType(event.target.value)}
+                defaultChecked
+              ></input>
+              <span className="checkbox"></span>
+            </label>
+            <label htmlFor="track" className="checkbox-container">
+              Tracks
+              <input
+                type="checkbox"
+                className="search-selection"
+                name="type"
+                value="track"
+                id="track"
+                onChange={(event) => this.handleType(event.target.value)}
+                defaultChecked
+              ></input>
+              <span className="checkbox"></span>
+            </label>
           </div>
         </div>
-        {isLoading}
-        {results}
-        {noResults}
+        <div className="results-div">
+          {isLoading}
+          {results}
+          {noResults}
+        </div>
       </div>
     );
   }
