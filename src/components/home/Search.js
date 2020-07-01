@@ -105,6 +105,11 @@ export default class Search extends Component {
           {this.state.results.map((result, index) => {
             return <SearchResult key={index} result={result} />;
           })}
+          {/* filler divs to set final row of results to flex start */}
+          <div className="search-result"></div>
+          <div className="search-result"></div>
+          <div className="search-result"></div>
+          <div className="search-result"></div>
         </div>
       ) : (
         <div></div>
@@ -130,7 +135,7 @@ export default class Search extends Component {
             <input
               id="searchbar"
               type="text"
-              placeholder="Search for an Artist, Album or Track..."
+              placeholder="Search..."
               autoComplete="off"
               /*fires search function upon user input*/
               onChange={(event) => this.handleSearch(event.target.value)}
