@@ -47,12 +47,19 @@ class Home extends Component {
       <div className="home-page-body">
         <h1 id="home-page-header">music.all</h1>
         <a
-          className="spotifyAuth-btn"
+          className="spotify-btn"
           href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&show_dialog=true`}
         >
           Login with Spotify
         </a>
-        <p className="home-page-body">Why?</p>
+        <p className="spotify-why">Why?</p>
+        <div className="info-popout">
+          <div></div>
+          <p>
+            music.all uses Spotify to personalise your experience and allow you
+            play music directly from the website
+          </p>
+        </div>
       </div>
     );
     return (
