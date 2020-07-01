@@ -4,34 +4,42 @@ export default class SearchResult extends Component {
   render() {
     /*conditionally render image depending on result type*/
     let imageUrl = null;
-    if (this.props.result.type === "artist") {
-      if (
-        this.props.result.images === undefined ||
-        this.props.result.images.length === 0
-      ) {
+
+    switch (this.props.result.type) {
+      case "artist":
+        if (
+          this.props.result.images === undefined ||
+          this.props.result.images.length === 0
+        ) {
+          imageUrl = "https://static.thenounproject.com/png/29993-200.png";
+        } else {
+          imageUrl = this.props.result.images[0].url;
+        }
+        break;
+      case "album":
+        if (
+          this.props.result.images === undefined ||
+          this.props.result.images.length === 0
+        ) {
+          imageUrl = "https://static.thenounproject.com/png/29993-200.png";
+        } else {
+          imageUrl = this.props.result.images[0].url;
+        }
+        break;
+      case "track":
+        if (
+          this.props.result.album === undefined ||
+          this.props.result.album.images === undefined ||
+          this.props.result.album.images.length === 0
+        ) {
+          imageUrl = "https://static.thenounproject.com/png/29993-200.png";
+        } else {
+          imageUrl = this.props.result.album.images[0].url;
+        }
+        break;
+      default:
         imageUrl = "https://static.thenounproject.com/png/29993-200.png";
-      } else {
-        imageUrl = this.props.result.images[0].url;
-      }
-    } else if (this.props.result.type === "album") {
-      if (
-        this.props.result.images === undefined ||
-        this.props.result.images.length === 0
-      ) {
-        imageUrl = "https://static.thenounproject.com/png/29993-200.png";
-      } else {
-        imageUrl = this.props.result.images[0].url;
-      }
-    } else if (this.props.result.type === "track") {
-      if (
-        this.props.result.album === undefined ||
-        this.props.result.album.images === undefined ||
-        this.props.result.album.images.length === 0
-      ) {
-        imageUrl = "https://static.thenounproject.com/png/29993-200.png";
-      } else {
-        imageUrl = this.props.result.album.images[0].url;
-      }
+        break;
     }
 
     /*conditionally render album type if result is album*/
