@@ -318,11 +318,16 @@ nav {
   margin: 20px;
   display: grid;
   grid-template-rows: 3fr 1fr;
+}
+
+.search-result-inner {
+  margin: auto;
+  width: 210px;
   animation: fadein 1s;
   transition: all 0.5s ease-out;
 }
 
-.search-result:hover {
+.search-result-inner:hover {
   cursor: pointer;
   transition: all 0.5s ease-out;
   transform: scale(1.1);
@@ -345,7 +350,7 @@ nav {
 .search-result-subtitle {
   margin: auto;
   /* margin: 2px; */
-  width: 300px;
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

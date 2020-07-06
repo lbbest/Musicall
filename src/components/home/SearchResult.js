@@ -62,13 +62,15 @@ export default class SearchResult extends Component {
 
     return (
       <div className="search-result">
-        <img src={imageUrl} alt="cover" className="search-result-img"></img>
-        <div className="search-result-info">
-          <div>
-            <p className="search-result-title">{this.props.result.name}</p>
-            <p className="search-result-subtitle">{objectArtist}</p>
+        <div className="search-result-inner">
+          <img src={imageUrl} alt="cover" className="search-result-img"></img>
+          <div className="search-result-info">
+            <div>
+              <p className="search-result-title">{this.props.result.name}</p>
+              <p className="search-result-subtitle">{objectArtist}</p>
+            </div>
+            <p className="search-result-type">{type}</p>
           </div>
-          <p className="search-result-type">{type}</p>
         </div>
       </div>
     );
