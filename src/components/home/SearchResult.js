@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class SearchResult extends Component {
   render() {
@@ -62,16 +63,18 @@ export default class SearchResult extends Component {
 
     return (
       <div className="search-result">
-        <div className="search-result-inner">
-          <img src={imageUrl} alt="cover" className="search-result-img"></img>
-          <div className="search-result-info">
-            <div>
-              <p className="search-result-title">{this.props.result.name}</p>
-              <p className="search-result-subtitle">{objectArtist}</p>
+        <Link to={`/${this.props.result.type}/${this.props.result.id}`}>
+          <div className="search-result-inner">
+            <img src={imageUrl} alt="cover" className="search-result-img"></img>
+            <div className="search-result-info">
+              <div>
+                <p className="search-result-title">{this.props.result.name}</p>
+                <p className="search-result-subtitle">{objectArtist}</p>
+              </div>
+              <p className="search-result-type">{type}</p>
             </div>
-            <p className="search-result-type">{type}</p>
           </div>
-        </div>
+        </Link>
       </div>
     );
   }
