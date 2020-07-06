@@ -350,7 +350,7 @@ nav {
 .search-result-subtitle {
   margin: auto;
   /* margin: 2px; */
-  width: 100%;
+  width: 210px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -369,4 +369,12 @@ nav {
 .search-result-type {
   margin: auto;
   color: var(--tertiary);
+}
+
+/*INFO PAGES*/
+/*ALL*/
+
+.page-container {
+  margin: auto;
+  margin-top: 125px;
 }
