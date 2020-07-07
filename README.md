@@ -1,8 +1,6 @@
 !THIS IS CURRENTLY A WORK IN PROGRESS AND HAS NOT YET BEEN DEPLOYED!
 
-
 WHAT IS MUSIC.ALL?
-
 
 music.all is a music search engine made using the Spotify API. Users can search for any artist, album or track hosted on Spotify and follow the results through to a detailed overview page where they are also able to play the music via their Spotify player app.
 
@@ -10,13 +8,13 @@ The detailed overview pages are powered by additional APIs from:
 
 - Discogs (deeper information about artist/album/song)
 
-- BandsInTown (concerts)
+- Ticketmaster (concerts)
 
-- Tastedive (related music)
+- TasteDive (related music)
 
 - LyricsOVH (lyrics)
 
-___________________________________________________
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
