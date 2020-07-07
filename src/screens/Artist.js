@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Nav from "../components/global/Nav";
 import axios from "axios";
+import SimilarArtists from "../components/artist/SimilarArtists";
 
 export default class Artist extends Component {
   state = {
@@ -24,13 +25,14 @@ export default class Artist extends Component {
     axios.get(url, header).then((res) => {
       // set state for artist data
       this.setState({ artist: res.data });
+      console.log(this.state.artist);
     });
   }
 
   render() {
     const artist = this.state.artist ? (
       <div>
-        <h1>{this.state.artist.name}</h1>
+        <SimilarArtists artist={this.state.artist.name} />
       </div>
     ) : (
       <div className="loader"></div>
