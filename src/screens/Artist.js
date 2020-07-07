@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Nav from "../components/global/Nav";
 import axios from "axios";
 import SimilarArtists from "../components/artist/SimilarArtists";
+import ArtistOverview from "../components/artist/ArtistOverview";
 
 export default class Artist extends Component {
   state = {
@@ -22,16 +23,22 @@ export default class Artist extends Component {
     };
 
     // axios get request to Spotify API for artist
-    axios.get(url, header).then((res) => {
-      // set state for artist data
-      this.setState({ artist: res.data });
-      console.log(this.state.artist);
-    });
+    axios
+      .get(url, header)
+      .then((res) => {
+        // set state for artist data
+        this.setState({ artist: res.data });
+        // console.log(this.state.artist);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {
     const artist = this.state.artist ? (
       <div>
+        <ArtistOverview spotifyDetails={this.state.artist} />
         <SimilarArtists artist={this.state.artist.name} />
       </div>
     ) : (
