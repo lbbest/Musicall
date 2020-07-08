@@ -121,8 +121,8 @@ export default class Search extends Component {
       this.state.search !== "" &&
       this.state.noResultsOn === true ? (
         <div>
-          <p id="no-results">!</p>
-          <p id="no-results-text">No Results</p>
+          <p className="no-results">!</p>
+          <p className="no-results-text">No Results</p>
         </div>
       ) : (
         <div></div>
