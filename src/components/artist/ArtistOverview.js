@@ -15,7 +15,10 @@ export default class ArtistOverview extends Component {
           spotifyDetails={this.state.spotifyDetails}
           artist={this.state.artist}
         />
-        <DiscogDetails artist={this.state.artist} />
+        <DiscogDetails
+          spotifyDetails={this.state.spotifyDetails}
+          artist={this.state.artist}
+        />
       </div>
     );
   }
