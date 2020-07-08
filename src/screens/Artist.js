@@ -38,7 +38,10 @@ export default class Artist extends Component {
   render() {
     const artist = this.state.artist ? (
       <div>
-        <ArtistOverview spotifyDetails={this.state.artist} />
+        <ArtistOverview
+          spotifyDetails={this.state.artist}
+          artist={this.state.artist.name}
+        />
         <SimilarArtists artist={this.state.artist.name} />
       </div>
     ) : (
