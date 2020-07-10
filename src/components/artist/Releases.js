@@ -39,7 +39,14 @@ export default class Releases extends Component {
         {this.state.albums.map((album, index) => {
           return (
             <div key={index}>
-              <img src={album.images[0].url} alt="album"></img>
+              {album.images[0] ? (
+                <img src={album.images[0].url} alt="album"></img>
+              ) : (
+                <img
+                  src="https://static.thenounproject.com/png/29993-200.png"
+                  alt="album"
+                ></img>
+              )}
               <p>{album.name}</p>
               <p>{album.album_type}</p>
               <p>{album.release_date}</p>
