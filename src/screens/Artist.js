@@ -4,6 +4,7 @@ import axios from "axios";
 import SimilarArtists from "../components/artist/SimilarArtists";
 import ArtistOverview from "../components/artist/ArtistOverview";
 import Releases from "../components/artist/Releases";
+import Concerts from "../components/artist/Concerts";
 
 export default class Artist extends Component {
   state = {
@@ -44,6 +45,7 @@ export default class Artist extends Component {
           artist={this.state.artist.name}
         />
         <Releases artist={this.state.artist.name} />
+        <Concerts artist={this.state.artist.name} />
         <SimilarArtists artist={this.state.artist.name} />
       </div>
     ) : (
