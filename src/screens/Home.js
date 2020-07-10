@@ -33,12 +33,12 @@ class Home extends Component {
     let _token = hash.access_token;
     if (_token) {
       // Set token
-      localStorage.setItem("token", _token);
+      sessionStorage.setItem("token", _token);
     }
   }
 
   render() {
-    const spotifyAuth = localStorage.getItem("token") ? (
+    const spotifyAuth = sessionStorage.getItem("token") ? (
       <div className="home-page-body">
         <h1 id="home-page-header">music.all</h1>
         <Search />

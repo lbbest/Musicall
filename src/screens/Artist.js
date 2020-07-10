@@ -17,7 +17,7 @@ export default class Artist extends Component {
     let url = `https://api.spotify.com/v1/artists/${artistID}`;
     let header = {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")} `,
+        Authorization: `Bearer ${sessionStorage.getItem("token")} `,
         "Content-Type": "application/json",
       },
     };

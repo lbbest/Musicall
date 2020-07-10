@@ -49,7 +49,7 @@ export default class Search extends Component {
     let url = `https://api.spotify.com/v1/search?q=${search}&type=${type}&limit=50`;
     let header = {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")} `,
+        Authorization: `Bearer ${sessionStorage.getItem("token")} `,
         "Content-Type": "application/json",
       },
     };
