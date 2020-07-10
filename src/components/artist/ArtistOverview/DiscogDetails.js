@@ -26,7 +26,7 @@ export default class DiscogDetails extends Component {
           .then((res) => {
             // send discogs data to state for use in component
             this.setState({ discogsDetails: res.data });
-            console.log(this.state.discogsDetails);
+            // console.log(this.state.discogsDetails);
           })
           .catch((err) => {
             console.log(err);
