@@ -12,6 +12,7 @@ export default class Search extends Component {
       results: [],
       isLoading: false,
       noResultsOn: false,
+      pleaseRefresh: false,
     };
   }
 
@@ -83,22 +84,40 @@ export default class Search extends Component {
         console.log(this.state);
       })
       .catch((err) => {
-        this.setState({ isLoading: false });
-        this.setState({ results: [] });
+        if (err.response.status === 401) {
+          this.setState({ isLoading: false });
+          this.setState({ results: [] });
+          this.setState({ pleaseRefresh: true });
+          sessionStorage.removeItem("token");
+        } else if (err.response.status === 400) {
+          this.setState({ isLoading: false });
+          this.setState({ results: [] });
+        }
         console.log(err);
       });
   };
 
   render() {
-    /*if results are loading, show loading symbol*/
-    const isLoading = this.state.isLoading ? (
-      <div className="loader"></div>
+    const pleaseRefresh = this.state.pleaseRefresh ? (
+      <div>
+        <p className="no-results">!</p>
+        <p className="no-results-text">
+          (401 Request Failed) Please refresh the page.
+        </p>
+      </div>
     ) : (
       <div></div>
     );
+    /*if results are loading, show loading symbol*/
+    const isLoading =
+      this.state.isLoading && !this.state.pleaseRefresh ? (
+        <div className="loader"></div>
+      ) : (
+        <div></div>
+      );
     /*if there are results and not loading, show results*/
     const results =
-      this.state.results &&
+      this.state.results.length !== 0 &&
       this.state.isLoading === false &&
       this.state.search !== "" ? (
         <div className="search-results">
@@ -185,6 +204,7 @@ export default class Search extends Component {
           </div>
         </div>
         <div className="results-div">
+          {pleaseRefresh}
           {isLoading}
           {results}
           {noResults}
