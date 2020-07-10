@@ -3,6 +3,7 @@ import Nav from "../components/global/Nav";
 import axios from "axios";
 import SimilarArtists from "../components/artist/SimilarArtists";
 import ArtistOverview from "../components/artist/ArtistOverview";
+import Releases from "../components/artist/Releases";
 
 export default class Artist extends Component {
   state = {
@@ -42,6 +43,7 @@ export default class Artist extends Component {
           spotifyDetails={this.state.artist}
           artist={this.state.artist.name}
         />
+        <Releases artist={this.state.artist.name} />
         <SimilarArtists artist={this.state.artist.name} />
       </div>
     ) : (
