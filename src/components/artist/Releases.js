@@ -36,23 +36,27 @@ export default class Releases extends Component {
     const albums = this.state.albums ? (
       <div>
         {/*map through albums and render*/}
-        {this.state.albums.map((album, index) => {
-          return (
-            <div key={index}>
-              {album.images[0] ? (
-                <img src={album.images[0].url} alt="album"></img>
-              ) : (
-                <img
-                  src="https://static.thenounproject.com/png/29993-200.png"
-                  alt="album"
-                ></img>
-              )}
-              <p>{album.name}</p>
-              <p>{album.album_type}</p>
-              <p>{album.release_date}</p>
-            </div>
-          );
-        })}
+        {this.state.albums
+          .filter((album) => {
+            return album.artists[0].name === this.props.artist;
+          })
+          .map((album, index) => {
+            return (
+              <div key={index}>
+                {album.images[0] ? (
+                  <img src={album.images[0].url} alt="album"></img>
+                ) : (
+                  <img
+                    src="https://static.thenounproject.com/png/29993-200.png"
+                    alt="album"
+                  ></img>
+                )}
+                <p>{album.name}</p>
+                <p>{album.album_type}</p>
+                <p>{album.release_date}</p>
+              </div>
+            );
+          })}
       </div>
     ) : (
       <div className="loader"></div>
