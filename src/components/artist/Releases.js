@@ -25,7 +25,7 @@ export default class Releases extends Component {
       .then((res) => {
         // send albums to component state
         this.setState({ albums: res.data.albums.items });
-        console.log(this.state.albums);
+        // console.log(this.state.albums);
       })
       .catch((err) => {
         console.log(err);
@@ -41,6 +41,8 @@ export default class Releases extends Component {
             return album.artists[0].name === this.props.artist;
           })
           .map((album, index) => {
+            const date = album.release_date;
+            const newDate = date.split("-").reverse().join(".");
             return (
               <div key={index}>
                 {album.images[0] ? (
@@ -53,7 +55,7 @@ export default class Releases extends Component {
                 )}
                 <p>{album.name}</p>
                 <p>{album.album_type}</p>
-                <p>{album.release_date}</p>
+                <p>{newDate}</p>
               </div>
             );
           })}
