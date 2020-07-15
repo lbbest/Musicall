@@ -1,10 +1,13 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class Nav extends Component {
   render() {
     return (
       <nav>
-        <p id="nav-logo">music.all</p>
+        <Link to="/">
+          <p id="nav-logo">music.all</p>
+        </Link>
         <ul className="nav-link-container">
           <li className="nav-link">Featured</li>
           <li className="nav-link">New Releases</li>
