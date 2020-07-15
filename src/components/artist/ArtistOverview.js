@@ -10,7 +10,7 @@ export default class ArtistOverview extends Component {
 
   render() {
     return (
-      <div>
+      <div className="artist-section-container" id="details-container">
         <SpotifyDetails
           spotifyDetails={this.state.spotifyDetails}
           artist={this.state.artist}
