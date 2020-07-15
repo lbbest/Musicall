@@ -30,8 +30,7 @@ export default class SimilarArtists extends Component {
     const similarArtists = this.state.similarArtists ? (
       // if there are similar artists render, otherwise show no results
       this.state.similarArtists.length ? (
-        <div>
-          <p>Similar artists:</p>
+        <div className="similar-artists-container">
           {/*map through and render similar artists*/}
           {this.state.similarArtists.map((similar, index) => {
             return <p key={index}>{similar.Name}</p>;
@@ -46,6 +45,11 @@ export default class SimilarArtists extends Component {
     ) : (
       <div className="loader"></div>
     );
-    return <div>{similarArtists}</div>;
+    return (
+      <div className="artist-section-container artist-section-right">
+        <h3>Similar artists:</h3>
+        {similarArtists}
+      </div>
+    );
   }
 }
