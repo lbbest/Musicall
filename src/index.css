@@ -376,5 +376,190 @@ nav {
 
 .page-container {
   margin: auto;
-  margin-top: 125px;
+  margin-top: 120px;
+}
+
+/*ARTIST PAGE*/
+.artist-page-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.artist-section-container {
+  margin: 15px;
+  padding: 15px;
+}
+
+.artist-section-container > h3 {
+  color: var(--secondary);
+}
+
+.artist-section-top-row {
+  min-height: 400px;
+}
+
+.artist-section-right {
+  border: 2px solid var(--secondary);
+  border-radius: 10px;
+  margin-bottom: 50px;
+}
+
+/*ARTIST OVERVIEW*/
+.details-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+/*SPOTIFY DETAILS*/
+
+.spotify-details-container,
+.discogs-details-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+}
+
+.spotify-details-container {
+  height: 400px;
+  margin-right: auto;
+  padding-right: 20px;
+}
+
+.spotify-details-title {
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  color: var(--secondary);
+}
+
+.spotify-details-img {
+  margin: auto;
+  object-fit: cover;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+}
+
+.spotify-details-btn {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+/*DISCOGS DETAILS*/
+
+.discogs-details-profile-container,
+.discogs-details-member-container,
+.discogs-details-genre-container,
+.discogs-details-link-container > * {
+  color: var(--secondary);
+  text-align: start;
+}
+
+.discogs-details-sec-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.discogs-details-sec-container > * {
+  margin-right: 50px;
+}
+
+.discogs-details-genre {
+  text-transform: capitalize;
+}
+
+.discogs-details-link-container {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.discogs-details-link-container > * {
+  text-align: end;
+}
+
+/*CONCERTS*/
+
+#upcoming-concerts {
+  color: var(--secondary);
+}
+
+.concerts-table-container {
+  max-height: 500px;
+  overflow: scroll;
+}
+
+.concert-details {
+  text-align: start;
+}
+
+.concerts-table > *:nth-child(odd) {
+  color: var(--secondary);
+  border-radius: 10px;
+}
+
+.concerts-table > *:nth-child(even) {
+  color: var(--tertiary);
+  border-radius: 10px;
+}
+
+/*SIMILAR ARTISTS*/
+
+.similar-artists-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.similar-artists-container > * {
+  color: var(--secondary);
+  padding-right: 15px;
+}
+
+/*RELEASES*/
+
+.release-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.release {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin-bottom: 50px;
+  animation: fadein 1s;
+  transition: all 0.5s ease-out;
+}
+
+.release:hover {
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+  transform: scale(1.1);
+}
+
+.release-img {
+  margin: auto;
+  width: 250px;
+  height: 250px;
+  border-radius: 5px;
+}
+
+.release-details {
+  margin: auto;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.release-details > * {
+  color: var(--secondary);
+  margin: 2px;
+}
+
+.release-details:nth-child(2) {
+  text-transform: capitalize;
 }
