@@ -34,7 +34,7 @@ export default class Releases extends Component {
   render() {
     // if albums are present render, otherwise show loader
     const albums = this.state.albums ? (
-      <div>
+      <div className="release-container">
         {/*map through albums and render*/}
         {this.state.albums
           .filter((album) => {
@@ -42,20 +42,31 @@ export default class Releases extends Component {
           })
           .map((album, index) => {
             const date = album.release_date;
-            const newDate = date.split("-").reverse().join(".");
+            const newDate = date
+              .split("-")
+              .reverse()
+              .join(".")
+              .substr(date.length - 4);
             return (
-              <div key={index}>
+              <div className="release" key={index}>
                 {album.images[0] ? (
-                  <img src={album.images[0].url} alt="album"></img>
+                  <img
+                    className="release-img"
+                    src={album.images[0].url}
+                    alt="album"
+                  ></img>
                 ) : (
                   <img
+                    className="release-img"
                     src="https://static.thenounproject.com/png/29993-200.png"
                     alt="album"
                   ></img>
                 )}
-                <p>{album.name}</p>
-                <p>{album.album_type}</p>
-                <p>{newDate}</p>
+                <div className="release-details">
+                  <p>{album.name}</p>
+                  <p>{album.album_type}</p>
+                  <p>{newDate}</p>
+                </div>
               </div>
             );
           })}
@@ -63,6 +74,6 @@ export default class Releases extends Component {
     ) : (
       <div className="loader"></div>
     );
-    return <div>{albums}</div>;
+    return <div className="artist-section-container">{albums}</div>;
   }
 }
