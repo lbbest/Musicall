@@ -31,29 +31,29 @@ export default class Concerts extends Component {
 
   render() {
     const concerts = this.state.concerts ? (
-      <div>
+      <table className="concerts-table" cellSpacing="0" cellPadding="5px">
         {this.state.concerts.map((concert, index) => {
           const date = concert.dates.start.localDate;
           const newDate = date.split("-").reverse().join(".");
           return (
-            <div key={index}>
-              <p>
+            <tr key={index}>
+              <td className="concert-details">
                 {this.state.artist} @ {concert._embedded.venues[0].name},{" "}
                 {concert._embedded.venues[0].city.name} -{" "}
                 {concert._embedded.venues[0].country.countryCode}
-              </p>
-              <p>{newDate}</p>
-            </div>
+              </td>
+              <td className="concert-date">{newDate}</td>
+            </tr>
           );
         })}
-      </div>
+      </table>
     ) : (
       <div className="loader"></div>
     );
     return (
-      <div>
-        <p>Upcoming Concerts:</p>
-        <div>{concerts}</div>
+      <div className="artist-section-container artist-section-top-row artist-section-right">
+        <h3 id="upcoming-concerts">Upcoming Concerts:</h3>
+        <div className="concerts-table-container">{concerts}</div>
       </div>
     );
   }
