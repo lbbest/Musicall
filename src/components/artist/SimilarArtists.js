@@ -46,7 +46,7 @@ export default class SimilarArtists extends Component {
       <div className="loader"></div>
     );
     return (
-      <div className="artist-section-container artist-section-right">
+      <div className="artist-section-container">
         <h3>Similar artists:</h3>
         {similarArtists}
       </div>

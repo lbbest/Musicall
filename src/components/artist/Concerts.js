@@ -51,7 +51,7 @@ export default class Concerts extends Component {
       <div className="loader"></div>
     );
     return (
-      <div className="artist-section-container artist-section-top-row artist-section-right">
+      <div className="artist-section-container artist-section-top-row">
         <h3 id="upcoming-concerts">Upcoming Concerts:</h3>
         <div className="concerts-table-container">{concerts}</div>
       </div>
