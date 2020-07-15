@@ -50,10 +50,8 @@ export default class DiscogDetails extends Component {
           <div className="discogs-details-sec-container">
             {/*div that renders either artist real name or band member names*/}
             <div className="discogs-details-member-container">
-              {this.state.discogsDetails.realname &&
-                (<h3>Real name:</h3>)(
-                  <p>{this.state.discogsDetails.realname}</p>
-                )}
+              {this.state.discogsDetails.realname && <h3>Real name:</h3>}
+              <p>{this.state.discogsDetails.realname}</p>
               {this.state.discogsDetails.members && <h3>Active Members:</h3>}
               {/*filters members and returns only active members, then maps through each active member*/}
               {this.state.discogsDetails.members &&
