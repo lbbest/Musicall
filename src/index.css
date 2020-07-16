@@ -132,6 +132,8 @@ nav {
 .info-popout {
   width: 300px;
   display: none;
+  animation: fadein 1s;
+  transition: all 0.5s ease-out;
 }
 
 .info-popout > div {
@@ -360,7 +362,7 @@ nav {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 2px;
+  padding: 5px;
 }
 
 .search-result-title {
@@ -375,6 +377,7 @@ nav {
 .search-result-type {
   margin: auto;
   color: var(--tertiary);
+  text-transform: capitalize;
 }
 
 /*INFO PAGES*/
@@ -589,7 +592,7 @@ nav {
 /*ALBUM OVERVIEW*/
 .album-overview-container {
   padding: 15px;
-  margin: 15px;
+  margin: 0 50px;
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-template-rows: 50% 50%;
@@ -652,6 +655,7 @@ nav {
 /*ALBUM TRACKS*/
 .album-tracks-container {
   margin: 50px 50px;
+  padding: 15px;
 }
 
 .album-tracks-container > th > h3 {
