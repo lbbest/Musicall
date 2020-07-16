@@ -49,7 +49,7 @@ export default class Artist extends Component {
         </div>
         <div className="artist-page-col2">
           <Concerts artist={this.state.artist.name} />
-          <SimilarArtists artist={this.state.artist.name} />
+          <SimilarArtists artist={this.state.artist} />
         </div>
       </div>
     ) : (

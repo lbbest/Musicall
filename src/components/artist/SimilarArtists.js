@@ -8,7 +8,7 @@ export default class SimilarArtists extends Component {
 
   componentDidMount() {
     // console.log(this.props.artist);
-    let artist = this.props.artist;
+    let artist = this.props.artist.name;
 
     // retrieve similar artists from TasteDive API
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
@@ -47,7 +47,7 @@ export default class SimilarArtists extends Component {
     );
     return (
       <div className="artist-section-container">
-        <h3>Similar artists:</h3>
+        <h3>Similar Artists:</h3>
         {similarArtists}
       </div>
     );
