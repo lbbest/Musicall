@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class AlbumTracks extends Component {
   state = {
@@ -11,7 +12,7 @@ export default class AlbumTracks extends Component {
           <h3>#</h3>
         </th>
         <th>
-          <h3>Name:</h3>
+          <h3>Track:</h3>
         </th>
         <th>
           <h3>Duration:</h3>
@@ -29,7 +30,9 @@ export default class AlbumTracks extends Component {
             return (
               <tr key={index}>
                 <td>{track.track_number}.</td>
-                <td>{track.name}</td>
+                <td>
+                  <Link to={`/track/${track.id}`}>{track.name}</Link>
+                </td>
                 <td>{duration}</td>
                 <td>
                   <div className="play-btn">
