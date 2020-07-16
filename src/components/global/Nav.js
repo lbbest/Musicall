@@ -6,7 +6,7 @@ export default class Nav extends Component {
     return (
       <nav>
         <Link to="/">
-          <p id="nav-logo">music.all</p>
+          <h3 id="nav-logo">music.all</h3>
         </Link>
         <ul className="nav-link-container">
           <li className="nav-link">Featured</li>
