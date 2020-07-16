@@ -36,7 +36,7 @@ export default class Album extends Component {
   }
   render() {
     const album = this.state.album ? (
-      <div>
+      <div className="album-page-container">
         <AlbumOverview
           spotifyDetails={this.state.album}
           album={this.state.album.name}
