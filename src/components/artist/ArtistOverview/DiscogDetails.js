@@ -48,9 +48,20 @@ export default class DiscogDetails extends Component {
             <p>{this.state.discogsDetails.profile}</p>
           </div>
           <div className="discogs-details-sec-container">
+            {/*genre div*/}
+            <div className="discogs-details-genre-container">
+              <h3>Genres:</h3>
+              {this.props.spotifyDetails.genres.map((genre, index) => {
+                return (
+                  <p className="discogs-details-genre" key={index}>
+                    {genre}
+                  </p>
+                );
+              })}
+            </div>
             {/*div that renders either artist real name or band member names*/}
             <div className="discogs-details-member-container">
-              {this.state.discogsDetails.realname && <h3>Real name:</h3>}
+              {this.state.discogsDetails.realname && <h3>Real Name:</h3>}
               <p>{this.state.discogsDetails.realname}</p>
               {this.state.discogsDetails.members && <h3>Active Members:</h3>}
               {/*filters members and returns only active members, then maps through each active member*/}
@@ -63,56 +74,46 @@ export default class DiscogDetails extends Component {
                     return <p key={index}>{member.name}</p>;
                   })}
             </div>
-            {/*genre div*/}
-            <div className="discogs-details-genre-container">
-              <h3>Genres:</h3>
-              {this.props.spotifyDetails.genres.map((genre, index) => {
-                return (
-                  <p className="discogs-details-genre" key={index}>
-                    {genre}
-                  </p>
-                );
-              })}
-            </div>
             {/*div for external links*/}
             <div className="discogs-details-link-container">
-              <h3>External links:</h3>
+              <h3>External Links:</h3>
               {/*div for filtering through related urls*/}
-              {this.state.discogsDetails.urls.map((url, index) => {
-                let site = {
-                  name: "",
-                  url: "",
-                };
-                if (url.includes("soundcloud")) {
-                  site.name = "Soundcloud";
-                  site.url = url;
-                } else if (url.includes("youtube")) {
-                  site.name = "YouTube";
-                  site.url = url;
-                } else if (url.includes("facebook")) {
-                  site.name = "Facebook";
-                  site.url = url;
-                } else if (url.includes("twitter")) {
-                  site.name = "Twitter";
-                  site.url = url;
-                } else if (url.includes("instagram")) {
-                  site.name = "Instagram";
-                  site.url = url;
-                } else if (url.includes("wikipedia")) {
-                  site.name = "Wikipedia";
-                  site.url = url;
-                }
-                return (
-                  <a
-                    key={index}
-                    href={site.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <p>{site.name}</p>
-                  </a>
-                );
-              })}
+              {this.state.discogsDetails.urls &&
+                this.state.discogsDetails.urls.map((url, index) => {
+                  let site = {
+                    name: "",
+                    url: "",
+                  };
+                  if (url.includes("soundcloud")) {
+                    site.name = "Soundcloud";
+                    site.url = url;
+                  } else if (url.includes("youtube")) {
+                    site.name = "YouTube";
+                    site.url = url;
+                  } else if (url.includes("facebook")) {
+                    site.name = "Facebook";
+                    site.url = url;
+                  } else if (url.includes("twitter")) {
+                    site.name = "Twitter";
+                    site.url = url;
+                  } else if (url.includes("instagram")) {
+                    site.name = "Instagram";
+                    site.url = url;
+                  } else if (url.includes("wikipedia")) {
+                    site.name = "Wikipedia";
+                    site.url = url;
+                  }
+                  return (
+                    <a
+                      key={index}
+                      href={site.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <p>{site.name}</p>
+                    </a>
+                  );
+                })}
             </div>
           </div>
         </div>
