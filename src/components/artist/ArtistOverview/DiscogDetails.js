@@ -50,7 +50,7 @@ export default class DiscogDetails extends Component {
           <div className="discogs-details-sec-container">
             {/*genre div*/}
             <div className="discogs-details-genre-container">
-              <h3>Genres:</h3>
+              <h3>Genre(s):</h3>
               {this.props.spotifyDetails.genres.map((genre, index) => {
                 return (
                   <p className="discogs-details-genre" key={index}>
