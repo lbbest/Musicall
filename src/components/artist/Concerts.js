@@ -22,7 +22,7 @@ export default class Concerts extends Component {
           return concert.name === this.state.artist;
         });
         this.setState({ concerts: concerts });
-        console.log(this.state.concerts);
+        // console.log(this.state.concerts);
       })
       .catch((err) => {
         console.log(err);
@@ -31,27 +31,34 @@ export default class Concerts extends Component {
 
   render() {
     const concerts = this.state.concerts ? (
-      <table className="concerts-table" cellSpacing="0" cellPadding="5px">
-        {this.state.concerts.map((concert, index) => {
-          const date = concert.dates.start.localDate;
-          const newDate = date.split("-").reverse().join(".");
-          return (
-            <tr key={index}>
-              <td className="concert-details">
-                {this.state.artist} @ {concert._embedded.venues[0].name},{" "}
-                {concert._embedded.venues[0].city.name} -{" "}
-                {concert._embedded.venues[0].country.countryCode}
-              </td>
-              <td className="concert-date">{newDate}</td>
-            </tr>
-          );
-        })}
-      </table>
+      this.state.concerts.length ? (
+        <table className="concerts-table" cellSpacing="0" cellPadding="5px">
+          {this.state.concerts.map((concert, index) => {
+            const date = concert.dates.start.localDate;
+            const newDate = date.split("-").reverse().join(".");
+            return (
+              <tr key={index}>
+                <td className="concert-details">
+                  {this.state.artist} @ {concert._embedded.venues[0].name},{" "}
+                  {concert._embedded.venues[0].city.name} -{" "}
+                  {concert._embedded.venues[0].country.countryCode}
+                </td>
+                <td className="concert-date">{newDate}</td>
+              </tr>
+            );
+          })}
+        </table>
+      ) : (
+        <div>
+          <p className="no-results">!</p>
+          <p className="no-results-text">No upcoming concerts.</p>
+        </div>
+      )
     ) : (
       <div className="loader"></div>
     );
     return (
-      <div className="artist-section-container artist-section-top-row">
+      <div className="artist-section-container">
         <h3 id="upcoming-concerts">Upcoming Concerts:</h3>
         <div className="concerts-table-container">{concerts}</div>
       </div>
