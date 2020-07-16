@@ -382,7 +382,7 @@ nav {
 
 .page-container {
   margin: auto;
-  margin-top: 100px;
+  margin-top: 125px;
 }
 
 /*ARTIST PAGE*/
@@ -461,6 +461,11 @@ nav {
   justify-content: flex-start;
 }
 
+.discogs-details-sec-container > div > *,
+.discogs-details-sec-container > div > * > * {
+  margin: 0;
+}
+
 .discogs-details-sec-container > * {
   margin-right: 50px;
 }
@@ -476,6 +481,12 @@ nav {
 
 .discogs-details-link-container > * {
   text-align: end;
+}
+
+/*COL 2*/
+.artist-page-col2 > * {
+  border: 1px solid var(--secondary);
+  border-radius: 10px;
 }
 
 /*CONCERTS*/
@@ -509,12 +520,12 @@ nav {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .similar-artists-container > * {
   color: var(--secondary);
-  padding-right: 15px;
+  padding: 0 10px;
 }
 
 /*RELEASES*/
@@ -543,7 +554,7 @@ nav {
 .release:hover {
   cursor: pointer;
   transition: all 0.5s ease-out;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .release-img {
@@ -627,8 +638,9 @@ nav {
   grid-column: 2/3;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: auto 0;
+  margin-left: 50px;
 }
 
 .album-details-container-2 > div > h3,
