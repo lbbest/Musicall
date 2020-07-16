@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default class Releases extends Component {
@@ -25,7 +26,7 @@ export default class Releases extends Component {
       .then((res) => {
         // send albums to component state
         this.setState({ albums: res.data.albums.items });
-        // console.log(this.state.albums);
+        console.log(this.state.albums);
       })
       .catch((err) => {
         console.log(err);
@@ -49,31 +50,42 @@ export default class Releases extends Component {
               .substr(date.length - 4);
             return (
               <div className="release" key={index}>
-                {album.images[0] ? (
-                  <img
-                    className="release-img"
-                    src={album.images[0].url}
-                    alt="album"
-                  ></img>
-                ) : (
-                  <img
-                    className="release-img"
-                    src="https://static.thenounproject.com/png/29993-200.png"
-                    alt="album"
-                  ></img>
-                )}
-                <div className="release-details">
-                  <p>{album.name}</p>
-                  <p>{album.album_type}</p>
-                  <p>{newDate}</p>
-                </div>
+                <Link to={`/album/${album.id}`}>
+                  {album.images[0] ? (
+                    <img
+                      className="release-img"
+                      src={album.images[0].url}
+                      alt="album"
+                    ></img>
+                  ) : (
+                    <img
+                      className="release-img"
+                      src="https://static.thenounproject.com/png/29993-200.png"
+                      alt="album"
+                    ></img>
+                  )}
+                  <div className="release-details">
+                    <p>{album.name}</p>
+                    <p>{newDate}</p>
+                    <p className="release-details-type">{album.album_type}</p>
+                  </div>
+                </Link>
               </div>
             );
           })}
+        {/*filler divs to fill remainder of row*/}
+        <div className="release"></div>
+        <div className="release"></div>
+        <div className="release"></div>
       </div>
     ) : (
       <div className="loader"></div>
     );
-    return <div className="artist-section-container">{albums}</div>;
+    return (
+      <div className="artist-section-container">
+        <h3 className="releases-title">Releases:</h3>
+        {albums}
+      </div>
+    );
   }
 }
