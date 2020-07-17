@@ -5,7 +5,8 @@ import Search from "../components/home/Search";
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 // Set clientID and redirectUri for call to Spotify API
 const clientId = "03d5e0960c054d4996f568580a8069f3";
-const redirectUri = "http:%2F%2Flocalhost:3000/";
+// const redirectUri = "http:%2F%2Flocalhost:3000/";
+const redirectUri = "https://musicallv1.netlify.app/";
 // const scopes = ["user-read-currently-playing", "user-read-playback-state"]; CAN ADD SCOPES BY ADDING "&scope=${scopes.join("%20")}" TO HREF
 // Get the hash of the url
 const hash = window.location.hash
