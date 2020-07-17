@@ -12,13 +12,32 @@ export default class SimilarArtists extends Component {
 
     // retrieve similar artists from TasteDive API
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    let url = `https://tastedive.com/api/similar?q=${artist}&type=music&k=377965-Musicall-BCXU1LOW`;
+    let url = `https://tastedive.com/api/similar?q=${artist}&type=music&limit=50&k=377965-Musicall-BCXU1LOW`;
     axios
       .get(proxyurl + url)
       .then((res) => {
         // console.log(res);
         this.setState({ similarArtists: res.data.Similar.Results });
         // console.log(this.state.similarArtists);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  similarArtistRedirect(artist) {
+    let url = `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1`;
+    let header = {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("token")} `,
+        "Content-Type": "application/json",
+      },
+    };
+    axios
+      .get(url, header)
+      .then((res) => {
+        console.log(res);
+        window.location.href = `http://localhost:3000/artist/${res.data.artists.items[0].id}`;
       })
       .catch((err) => {
         console.log(err);
@@ -33,7 +52,17 @@ export default class SimilarArtists extends Component {
         <div className="similar-artists-container">
           {/*map through and render similar artists*/}
           {this.state.similarArtists.map((similar, index) => {
-            return <p key={index}>{similar.Name}</p>;
+            return (
+              <p
+                key={index}
+                onClick={() => {
+                  this.similarArtistRedirect(similar.Name);
+                }}
+                className="text-link-dyn"
+              >
+                {similar.Name}
+              </p>
+            );
           })}
         </div>
       ) : (
