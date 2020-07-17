@@ -37,9 +37,7 @@ export default class SimilarArtists extends Component {
       .get(url, header)
       .then((res) => {
         console.log(res);
-        this.context.router.history.push(
-          `/artist/${res.data.artists.items[0].id}`
-        );
+        window.location.href = `http://musicallv1.netlify.app/artist/${res.data.artists.items[0].id}`;
       })
       .catch((err) => {
         console.log(err);
