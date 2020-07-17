@@ -50,7 +50,7 @@ export default class Releases extends Component {
               .substr(date.length - 4);
             return (
               <div className="release" key={index}>
-                <Link to={`/album/${album.id}`}>
+                <Link to={`/album/${album.id}`} className="text-link">
                   {album.images[0] ? (
                     <img
                       className="release-img"

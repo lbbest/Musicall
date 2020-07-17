@@ -63,7 +63,10 @@ export default class SearchResult extends Component {
 
     return (
       <div className="search-result">
-        <Link to={`/${this.props.result.type}/${this.props.result.id}`}>
+        <Link
+          to={`/${this.props.result.type}/${this.props.result.id}`}
+          className="text-link"
+        >
           <div className="search-result-inner">
             <img src={imageUrl} alt="cover" className="search-result-img"></img>
             <div className="search-result-info">

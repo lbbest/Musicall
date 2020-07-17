@@ -31,7 +31,9 @@ export default class AlbumTracks extends Component {
               <tr key={index}>
                 <td>{track.track_number}.</td>
                 <td>
-                  <Link to={`/track/${track.id}`}>{track.name}</Link>
+                  <Link to={`/track/${track.id}`} className="text-link-dyn">
+                    {track.name}
+                  </Link>
                 </td>
                 <td>{duration}</td>
                 <td>

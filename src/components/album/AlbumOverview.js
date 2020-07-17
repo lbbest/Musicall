@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class AlbumOverview extends Component {
   state = {
@@ -38,7 +39,12 @@ export default class AlbumOverview extends Component {
           <h1>{spotifyDetails.name}</h1>
           {/*render album artist & album type*/}
           <p>
-            {spotifyDetails.artists[0].name}
+            <Link
+              to={`/artist/${spotifyDetails.artists[0].id}`}
+              className="text-link-dyn"
+            >
+              {spotifyDetails.artists[0].name}
+            </Link>
             <br></br>
             {spotifyDetails.album_type}
           </p>
