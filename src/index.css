@@ -45,6 +45,12 @@ nav {
 #nav-logo {
   color: var(--secondary);
   padding: 0 20px;
+  transition: all 0.5s ease-out;
+}
+
+#nav-logo:hover {
+  transition: all 0.5s ease-out;
+  transform: scale(1.1);
 }
 
 .nav-link-container {
@@ -388,6 +394,18 @@ nav {
   margin-top: 125px;
 }
 
+.text-link,
+.text-link-dyn {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.text-link-dyn:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /*ARTIST PAGE*/
 .artist-page-grid {
   display: grid;
@@ -646,8 +664,8 @@ nav {
   margin-left: 50px;
 }
 
-.album-details-container-2 > div > h3,
-.album-details-container-2 > div > p {
+.album-details-container-2 > div > *,
+.track-details-container > div > * {
   margin: 0;
   text-align: start;
 }
@@ -690,4 +708,41 @@ nav {
   text-decoration: none;
   font-size: 20px;
   color: var(--tertiary);
+}
+
+/*TRACKS*/
+.track-details-container {
+  color: var(--secondary);
+  grid-row: 2/3;
+  grid-column: 2/3;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: auto 0;
+  margin-left: 50px;
+}
+
+.track-details-container > * {
+  margin-right: 50px;
+}
+
+/*LYRICS*/
+
+.lyrics-container {
+  margin: 50px 50px;
+  padding: 15px;
+  padding-bottom: 50px;
+  /* background-color: var(--tertiary); */
+  border: 2px solid var(--secondary);
+  border-radius: 10px;
+}
+
+.lyrics,
+.lyrics-container > h3 {
+  color: var(--secondary);
+}
+
+.lyrics > * {
+  margin: 0;
+  height: 1rem;
 }
