@@ -37,7 +37,7 @@ export default class SimilarArtists extends Component {
       .get(url, header)
       .then((res) => {
         console.log(res);
-        window.location.href = `http://localhost:3000/artist/${res.data.artists.items[0].id}`;
+        window.location.href = `/artist/${res.data.artists.items[0].id}`;
       })
       .catch((err) => {
         console.log(err);
