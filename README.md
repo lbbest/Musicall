@@ -1,4 +1,14 @@
-!THIS IS CURRENTLY A WORK IN PROGRESS AND HAS NOT YET BEEN DEPLOYED!
+COMING SOON:
+
+- Mobile compatibility
+
+- Release filter/sort on Artist page
+
+- Built-in Spotify web player
+
+- Recommendations and New Releases page
+
+- Broader album/song information
 
 WHAT IS MUSIC.ALL?
 
