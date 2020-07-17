@@ -37,7 +37,7 @@ export default class SimilarArtists extends Component {
       .get(url, header)
       .then((res) => {
         console.log(res);
-        window.location.pathname = `/artist/${res.data.artists.items[0].id}`;
+        this.props.history.push(`/artist/${res.data.artists.items[0].id}`);
       })
       .catch((err) => {
         console.log(err);
