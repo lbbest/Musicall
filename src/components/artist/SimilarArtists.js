@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 export default class SimilarArtists extends Component {
   state = {
@@ -37,7 +38,10 @@ export default class SimilarArtists extends Component {
       .get(url, header)
       .then((res) => {
         console.log(res);
-        window.location.href = `http://musicallv1.netlify.app/artist/${res.data.artists.items[0].id}`;
+        return (
+          <Redirect to={`/artist/${res.data.artists.items[0].id}`}></Redirect>
+        );
+        // window.location.href = `http://musicallv1.netlify.app/artist/${res.data.artists.items[0].id}`;
       })
       .catch((err) => {
         console.log(err);
