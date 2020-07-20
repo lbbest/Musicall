@@ -26,7 +26,7 @@ export default class Releases extends Component {
       .then((res) => {
         // send albums to component state
         this.setState({ albums: res.data.albums.items });
-        console.log(this.state.albums);
+        // console.log(this.state.albums);
       })
       .catch((err) => {
         console.log(err);
