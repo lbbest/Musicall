@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default class SimilarArtists extends Component {
   state = {
@@ -9,39 +9,21 @@ export default class SimilarArtists extends Component {
 
   componentDidMount() {
     // console.log(this.props.artist);
-    let artist = this.props.artist.name;
+    let artistID = this.props.artist.id;
 
-    // retrieve similar artists from TasteDive API
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    let url = `https://tastedive.com/api/similar?q=${artist}&type=music&limit=50&k=377965-Musicall-BCXU1LOW`;
-    axios
-      .get(proxyurl + url)
-      .then((res) => {
-        // console.log(res);
-        this.setState({ similarArtists: res.data.Similar.Results });
-        // console.log(this.state.similarArtists);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  similarArtistRedirect(artist) {
-    let url = `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1`;
+    let url = `https://api.spotify.com/v1/artists/${artistID}/related-artists`;
     let header = {
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem("token")} `,
         "Content-Type": "application/json",
       },
     };
+    // axios get request to Spotify API for related artists
     axios
       .get(url, header)
       .then((res) => {
-        console.log(res);
-        return (
-          <Redirect to={`/artist/${res.data.artists.items[0].id}`}></Redirect>
-        );
-        // window.location.href = `http://musicallv1.netlify.app/artist/${res.data.artists.items[0].id}`;
+        this.setState({ similarArtists: res.data.artists });
+        console.log(this.state.similarArtists);
       })
       .catch((err) => {
         console.log(err);
@@ -57,15 +39,13 @@ export default class SimilarArtists extends Component {
           {/*map through and render similar artists*/}
           {this.state.similarArtists.map((similar, index) => {
             return (
-              <p
+              <Link
+                to={`/artist/${similar.id}`}
                 key={index}
-                onClick={() => {
-                  this.similarArtistRedirect(similar.Name);
-                }}
                 className="text-link-dyn"
               >
-                {similar.Name}
-              </p>
+                {similar.name}
+              </Link>
             );
           })}
         </div>
