@@ -16,13 +16,18 @@ export default class Concerts extends Component {
     axios
       .get(proxyurl + url)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         let concerts = [];
-        concerts = res.data._embedded.events.filter((concert) => {
-          return concert.name === this.state.artist;
-        });
-        this.setState({ concerts: concerts });
-        // console.log(this.state.concerts);
+        if (res.data._embedded) {
+          concerts = res.data._embedded.events.filter((concert) => {
+            return concert.name === this.state.artist;
+          });
+          this.setState({ concerts: concerts });
+        } else {
+          this.setState({ concerts: [] });
+        }
+
+        console.log(this.state.concerts);
       })
       .catch((err) => {
         console.log(err);
@@ -37,14 +42,21 @@ export default class Concerts extends Component {
             const date = concert.dates.start.localDate;
             const newDate = date.split("-").reverse().join(".");
             return (
-              <tr key={index}>
-                <td className="concert-details">
-                  {this.state.artist} @ {concert._embedded.venues[0].name},{" "}
-                  {concert._embedded.venues[0].city.name} -{" "}
-                  {concert._embedded.venues[0].country.countryCode}
-                </td>
-                <td className="concert-date">{newDate}</td>
-              </tr>
+              <a
+                href={concert.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-link-dyn"
+              >
+                <tr key={index}>
+                  <td className="concert-details">
+                    {this.state.artist} @ {concert._embedded.venues[0].name},{" "}
+                    {concert._embedded.venues[0].city.name} -{" "}
+                    {concert._embedded.venues[0].country.countryCode}
+                  </td>
+                  <td className="concert-date">{newDate}</td>
+                </tr>
+              </a>
             );
           })}
         </table>
