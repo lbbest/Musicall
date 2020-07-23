@@ -8,6 +8,8 @@ COMING SOON:
 
 - Broader album/song information
 
+- Logos/Branding
+
 - General performance and bug fixes constantly reviewed
 
 WHAT IS MUSIC.ALL?
