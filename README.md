@@ -2,13 +2,13 @@ COMING SOON:
 
 - Mobile compatibility
 
-- Release filter/sort on Artist page
-
 - Built-in Spotify web player
 
 - Recommendations and New Releases page
 
 - Broader album/song information
+
+- General performance and bug fixes constantly reviewed
 
 WHAT IS MUSIC.ALL?
 
@@ -19,8 +19,6 @@ The detailed overview pages are powered by additional APIs from:
 - Discogs (deeper information about artist/album/song)
 
 - Ticketmaster (concerts)
-
-- TasteDive (related music)
 
 - LyricsOVH (lyrics)
 
