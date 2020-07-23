@@ -40,6 +40,16 @@ export default class Search extends Component {
     );
   };
 
+  // function for handling timer on search input (only fires search once user has stopped typing for 1s)
+  typingTimer = () => {
+    let interval = 1000;
+    // once user hits keyup, resets timer
+    clearTimeout(this.identifier);
+    this.identifier = setTimeout(() => {
+      this.doSearch();
+    }, interval);
+  };
+
   /*axios GET request to Spotify API to get search results*/
   doSearch = () => {
     /*assign search variables*/
@@ -158,7 +168,7 @@ export default class Search extends Component {
               autoComplete="off"
               /*fires search function upon user input*/
               onChange={(event) => this.handleSearch(event.target.value)}
-              onKeyUp={this.doSearch}
+              onKeyUp={this.typingTimer}
             ></input>
           </div>
           <div className="filter">
