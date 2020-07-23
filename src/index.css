@@ -551,9 +551,32 @@ nav {
 
 /*RELEASES*/
 
+.releases-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .releases-title {
   text-align: start;
   margin-left: 15px;
+  color: var(--secondary);
+}
+
+.releases-dropdown > label {
+  color: var(--secondary);
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.releases-dropdown > select {
+  background-color: var(--primary);
+  color: var(--secondary);
+  border: none;
+  border-bottom: 2px solid var(--secondary);
+  font-size: 1rem;
+  font-family: "Baloo Da 2", sans-serif;
 }
 
 .release-container {
