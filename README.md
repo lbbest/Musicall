@@ -1,7 +1,5 @@
 COMING SOON:
 
-- Mobile compatibility
-
 - Built-in Spotify web player
 
 - Recommendations and New Releases page

@@ -196,6 +196,12 @@ nav {
   line-height: 40px;
 }
 
+@media screen and (max-width: 768px) {
+  .searchbar-area {
+    width: 80%;
+  }
+}
+
 /*checkboxes*/
 .filter {
   margin: auto;
@@ -253,6 +259,12 @@ nav {
   background-color: var(--primary);
   margin-top: 100px;
   width: 100vw;
+}
+
+@media screen and (max-width: 768px) {
+  .checkbox-container {
+    margin-right: 10px;
+  }
 }
 
 /*loader*/
@@ -430,6 +442,13 @@ nav {
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
+
+@media screen and (max-width: 768px) {
+  .artist-page-grid,
+  .details-container {
+    grid-template-columns: 1fr;
+  }
+}
 /*SPOTIFY DETAILS*/
 
 .spotify-details-container,
@@ -464,6 +483,13 @@ nav {
   height: 100%;
   width: 100%;
   margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .spotify-details-container {
+    margin: auto;
+    padding: 0;
+  }
 }
 
 /*DISCOGS DETAILS*/
@@ -595,6 +621,13 @@ nav {
   transition: all 0.5s ease-out;
 }
 
+@media screen and (max-width: 768px) {
+  .release {
+    margin: auto;
+    padding-top: 40px;
+  }
+}
+
 .release:hover {
   cursor: pointer;
   transition: all 0.5s ease-out;
@@ -693,6 +726,38 @@ nav {
   text-align: start;
 }
 
+@media screen and (max-width: 768px) {
+  .album-overview-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .album-img-container {
+    height: 100%;
+  }
+  .album-img-container > img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+  }
+  .album-details-container-1 {
+    text-align: center;
+    margin: auto;
+    margin-bottom: 50px;
+  }
+  .album-details-container-2 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+  }
+  .album-details-container-2 > * {
+    width: 40%;
+    margin: 0 10px;
+  }
+}
+
 /*ALBUM TRACKS*/
 .album-tracks-container {
   margin: 50px 50px;
@@ -733,6 +798,13 @@ nav {
   color: var(--tertiary);
 }
 
+@media screen and (max-width: 768px) {
+  .album-tracks-container {
+    margin: 0;
+    margin-top: 50px;
+  }
+}
+
 /*TRACKS*/
 .track-details-container {
   color: var(--secondary);
@@ -747,6 +819,19 @@ nav {
 
 .track-details-container > * {
   margin-right: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .track-details-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: auto;
+    width: 100%;
+  }
+  .album-released {
+    margin: auto;
+  }
 }
 
 /*LYRICS*/
@@ -768,4 +853,11 @@ nav {
 .lyrics > * {
   margin: 0;
   height: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .lyrics-container {
+    padding: 10px;
+    margin: 50px 15px;
+  }
 }
